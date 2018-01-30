@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>选择图片文件后显示</title>
+  <style type="text/css">
+	body,input{font-size:50px;outline:none;}
+  </style>
+</head>
+<body>
+  <input type="file" id='img' onchange="showimg()"/>
+  <img src="" id='show'/>
+</body>
+<script type="text/javascript">
+  function showimg() {
+    var read= new FileReader();
+    var img=document.getElementById('img').files[0];
+    read.readAsDataURL(img);
+    read.onload=function(e){
+      document.getElementById('show').src=this.result;
+    };
+  }
+</script>
+</html>

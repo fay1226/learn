@@ -1,0 +1,19 @@
+<html>
+<head>
+  <title>选中内容</title>
+  <script type="text/javascript">
+	function loading(){
+		var tip=document.getElementById("txt");
+		var selection=window.getSelection();
+		var range=document.createRange();
+		range.selectNodeContents(tip);
+		selection.removeAllRanges();
+		selection.addRange(range);
+	};
+  </script>
+</head>
+<body onload="loading()">
+	<div id="txt" onclick="loading()"><h1>你好！</h1></div>
+</body>
+</html>
+

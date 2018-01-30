@@ -1,0 +1,242 @@
+    *{
+	    margin:0;
+	    padding:0;
+		outline:none;
+		word-break:break-all;
+	}
+	html,body{
+		background: url(file:///android_asset/images/bg1.png);
+		background-size: cover;
+    	background-repeat: no-repeat;
+		font-family:"宋体";
+		color:#666;
+		height:100%;
+		overflow:auto;
+	}
+	.center{
+		width:600px;
+		margin:50px auto;
+		box-shadow:-5px -5px 30px black;
+		border-radius:10px;
+	}
+	.header{
+	    width:100%;
+		height:70px;
+    	background-color: #5ef;
+    	font: 15px/40px 行楷;
+    	font-size: 35px;
+    	border-radius: 10px 10px 0px 0px;
+		position:relative;
+	}
+	.header.logo{
+		width:335px;
+		height:80px;
+		align:center;
+		border-radius:10px 10px 0px 0px;
+		position:absolute;
+		bottom:0px;
+	}
+	.hide{
+	    position:relative;
+		width: 25px;
+    	height: 25px;
+    	float: right;
+		margin:5px;
+    	font-size: 70%;
+		line-height:25px;
+    	text-align: center;
+    	color: white;
+		background-color:red;
+    	border-radius: 50px;
+	}
+	#hidden{
+	    width:80px;
+		height:80px;
+	    /*margin:2% auto;*/
+		position:absolute;
+		top:5px;
+		left:5px;
+		z-index:1;
+		background-color:#5ef;
+		background-size:cover;
+		border-radius:50px;
+		box-shadow:0 0 50px black;
+		display:none;
+		transform:rotate(360deg);
+        -ms-transform:rotate(360deg); /* IE 9 div旋转360°*/
+        -moz-transform:rotate(360deg); /* Firefox */
+        -webkit-transform:rotate(360deg); /* Safari 和 Chrome */
+        -o-transform:rotate(360deg); /* Opera */
+	}
+	.send{
+	    width:100%;
+		height:157px;
+		background-color: #5ef;
+   		border-radius: 0px 0px 10px 10px;
+	}
+	.send #massage{
+		border-right: 0;
+    	border-top: #000 1px solid;
+    	border-left: 0;
+    	border-bottom: #000 1px solid;
+		width:580px;
+		height:70px;
+		background-color:#EFD;
+		resize:none;
+		font-size:20px;
+		color:red;
+		padding:10px;
+	}
+	.send .bottom{
+	    margin:12px;
+    	font-size:18px;
+    	color:black;
+	}
+	.bottom #tips{
+		font-size:25px;
+		color:#4FCC00;
+	}
+	.tips{
+      display:-moz-inline-box;
+      display:inline-block;
+      width:350px;
+	}
+	#send{
+		float: right;
+		margin-top:-10px;
+    	border: 1px solid white;
+    	width: 55px;
+		height:55px;
+    	font: 200%/50% 微软雅黑;
+		color:white;
+    	background-color: #2af;
+    	border-radius:50px;
+    }
+	#send:hover{
+		cursor:pointer;
+	    background-color:blue;
+		transition:all ease 2s;
+	}
+	.content{
+	    width:100%;
+		height:600px;
+		overflow:auto;
+		outline:none;
+		background:url(file:///android_asset/images/bg1.png);
+		transparent:50%;
+		background-size:100% 140%;
+		background-position:30% 10%;
+    	background-repeat: no-repeat;
+	}
+	.content .left{
+		margin:10px;
+		margin-left:10px;
+		width:90%;
+		float:left;
+		text-align:left;
+	}
+	.content .right{
+		margin:10px;
+		width:90%;
+		float:right;
+		text-align:right;
+	}
+	#tx1{
+	    width:50px;
+		height:50px;
+		background-color:#ABF;
+		border:white 2px solid;
+		border-radius:50px;
+		overflow:hidden;
+		float:left;
+	}
+	.content #msg1{
+	    min-width:40px;
+		min-height:40px;
+	    max-width:60%;
+		max-height:500px;
+		overflow:auto;
+		margin-top:10px;
+		float:left;
+		line-height:150%;
+		border-radius:5px;
+		box-shadow:inset 0 0 35px 10px rgba(255,192,203,1);
+		background-color:rgba(255,192,203,0.3);
+		padding:10px;
+		font-size:150%;
+		color:#CF9;
+		text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+        -webkit-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+        -moz-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+        *filter: Glow(color=#000, strength=1);
+	}
+	.content .left_qp{
+	  width:0px;
+	  height:0px;
+	  border-width:8px 10px 8px;
+	  border-style:solid;
+	  border-color:transparent rgba(255,192,203,0.9) transparent transparent;
+	  margin-top:15px;
+	  margin-left:-5px;
+	  float:left;
+	}
+	.time1{
+	  border:1px solid gray;
+	  border-radius:50px;
+	  background:white;
+	  padding:3px;
+	  color:grey;
+	  font-size:60%;
+	  text-align:center;
+	  margin-left:-25px;
+	}
+	.time2{
+	  border:1px solid gray;
+	  border-radius:50px;
+	  background:white;
+	  padding:3px;
+	  color:grey;
+	  font-size:60%;
+	  text-align:center;
+	  margin-right:-25px;
+	}
+	#tx2{
+	    width:50px;
+		height:50px;
+		background-color:#FBA;
+		border:white 2px solid;
+		border-radius:50px;
+		overflow:hidden;
+	    float:right;
+	}
+	.content #msg2{
+	    min-width:40px;
+		min-height:40px;
+	    max-width:60%;
+		max-height:500px;
+		overflow:auto;
+		margin-top:10px;
+		line-height:150%;
+		border-radius:5px;
+		box-shadow:inset 0 0 35px 10px rgba(130,255,0,1);
+		background-color:rgba(130,225,0,0.3);
+		float:right;
+		text-align:left;
+		font-size:150%;
+		color:#F45;
+		padding:10px;
+		text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+        -webkit-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+        -moz-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+        *filter: Glow(color=#000, strength=1);
+	}
+	.content .right_qp{
+	  width:0px;
+	  height:0px;
+	  border-width:8px 10px 8px;
+	  border-style:solid;
+	  border-color:transparent transparent transparent rgba(130,255,0,0.9);
+	  margin-top:15px;
+	  margin-right:-5px;
+	  float:right;
+	}

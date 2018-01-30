@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>浮动效果</title>
+  <style type="text/css">
+    body{
+		margin:0;
+		padding:0;
+		background-color:lightskyblue;
+	}
+	.circle{
+		width:200px;
+		height:200px;
+		margin:200px auto;
+		background-color:rgba(255,100,50,0.9);
+		border-radius:360px;
+		box-shadow:0 0 70px 20px rgba(255,100,50,0.9);
+		-webkit-animation: circle0 5s linear alternate infinite;
+		animation: circle0 5s linear alternate infinite;
+	}
+
+	@-webkit-keyframes circle0 {
+        0% { -webkit-transform:translateY(-25px);}
+        25% { -webkit-transform:translateX(-25px);}
+        50% { -webkit-transform:translateY(25px);}
+        100% { -webkit-transform:translateX(25px);}
+    }
+
+    @keyframes circle0 {
+        0% { -webkit-transform:translateY(-25px);}
+        25% { -webkit-transform:translateX(-25px);}
+        50% { -webkit-transform:translateY(25px);}
+        100% { -webkit-transform:translateX(25px);}
+    }
+
+	.txt{
+		font-size: 25px;
+		color: green;
+		margin:200px 24%;
+		-webkit-animation: circle0 3s linear alternate infinite;
+		animation: circle0 3s linear alternate infinite;
+	}
+  </style>
+ </head>
+ <body>
+	<div class="circle"></div>
+	<div class="txt">起床了，太阳照到屁股了。哈哈~</div>
+ </body>
+</html>

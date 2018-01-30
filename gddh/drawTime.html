@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>canvas绘制时钟</title>
+  </head>
+  <body>
+	<h1 align="center">时针</h1>
+	<canvas id="oG" width="400px" height="400px">浏览器太Low了。</canvas>
+<script type="text/javascript">
+  window.onload=function(){
+    draw();
+  };
+  function draw(){
+    //画表盘
+	var oG=document.getElementById("oG");
+	var oGc=oG.getContext("2d");
+	oGc.begainPath();
+	oGc.arc(200,200,150,0,360*Math.PI/180,false);
+	oGc.stroke();
+	//画60个刻度
+	//画12个刻度
+	//画时针
+	//画分针
+	//画秒针
+  }
+</script>
+  </body>
+</html>

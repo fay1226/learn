@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title></title>
+    <style type="text/css">
+	  div{
+	    border:1px solid red;
+	  }
+	  .top{
+	    height:150px;
+		background-color:#58f;
+	  }
+	  .left{
+		float:left;
+		height:600px;
+		width:25%;
+		background-color:#f42;
+	  }
+	  .right{
+	    position:right;
+		height:600px;
+		background-color:#3f2;
+	  }
+	  body{
+	    z-index:2;
+	  }
+	  #temp{
+	    opacity:0.4;
+	    background-color:red;
+		visibility:hidden;
+	    z-index:5;
+	  }
+	  #alert{
+	    background-color:blue;
+	    z-index:9;
+		visibility:hidden;
+		width:300px;
+		height:250px;
+	  }
+	</style>
+  </head>
+  <body>
+	<div class="top">#</div>
+	<div>
+	  <div class="left">#</div>
+	  <div class="right">#</div>
+	</div>
+	<span>
+	  <a href="../index.html">校园导航</a>
+	</span>
+	<input type="text" id="yz"/><input type="button" value="OK" onclick="yz()"/>
+	<div id="temp"></div>
+	<div id="alert">alert</div>
+	<script type="text/javascript">
+	  function yz(){
+	    var yz=document.getElementById("yz").value;
+	    if(yz=="范青锋"){
+		  alert(yz); 
+		}
+	  }
+	  window.onload=function(){
+	    var tamp=document.getElementById("temp");
+		var alt=document.getElementById("alert");
+		tamp.onclick=function(){
+		  alertView.hidden(tamp,alt);
+		};
+		var sh=document.getElementsByClassName("top");
+		sh[0].onclick=function(){
+		  alertView.show(tamp,alt);
+		  tamp.style.height=innerHeight;
+		  tamp.style.width=innerWidth;
+		};
+		var alertView={
+	      show:function(tamp,alt){
+		    tamp.style.visibility="visible";
+		    alt.style.visibility="visible";
+		  },
+		  hidden:function(tamp,alt){
+		    tamp.style.visibility="hidden";
+		    alt.style.visibility="hidden";
+		  }
+	    };
+	  };
+	</script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>md5</title>
+    <style type="text/css">
+	  label{width:50px;padding:10px;font-size:35px;}
+	  #str,#rs{width:90%;margin-left:20px;padding:10px;border:2px solid black;border-radius:10px;font-size:33px;outline:none}
+	  #f1{width:90%;padding:10px;font-size:30px;}
+	  img{margin:10px 20px;max-width:90%;max-height:600px;}
+    </style>
+  </head>
+  <body>
+	<label>输入需要加密的字符串：</label><br/><input type="text" id="str"/><br/>
+	<label>结果：</label><br/><input type="text" id="rs" readonly="readonly"/>
+	<input type="file" id="f1"/><br/>
+	<img id="image"/>
+	<script type="text/javascript" src="md5.js"></script>
+	<script type="text/javascript">
+	  window.onload = function(){
+	    var input=document.getElementById("str");
+		var rs = document.getElementById("rs");
+		var result="加密后的内容。";
+		rs.value=result;
+		input.addEventListener("keyup",function(){
+		  result="加密后的内容。";
+		  if(input.value.length>0){
+		    var result = hex_md5(input.value);
+			rs.value = result;
+		  }else rs.value=result;
+		});
+		var file=document.getElementById("f1");
+		file.addEventListener("change",function(){
+		  var img = document.getElementById("image");
+		  var reader = new FileReader();
+          reader.readAsDataURL(file.files[0]);
+          reader.onload = function(evt){
+		    img.src = evt.target.result;
+		  };
+		});
+	  };
+	</script>
+  </body>
+</html>

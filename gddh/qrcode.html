@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title>QRCode</title>
+  <script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="jquery.qrcode.min.js"></script>
+  <style type="text/css">
+	*{font-size:20px;}
+	.content{background:#79cdcd;box-shadow:5px 5px 5px gray;border-radius:5px;border:1px solid grey;width:500px;margin:15px auto;}
+	.content h1{font-size:30px;text-align:center;}
+	.content div{width:85%;margin:0 auto;}
+	label{display:inline-block;margin-bottom:20px;}
+	label input{padding:5px;width:350px;background:none;outline:none;border:none;border-bottom:2px solid black;}
+	.content div button{width:100%;outline:none;border:none;border-radius:5px;background:#18ab29;font-size:30px;color:white;}
+	#qrcode{border:0px solid black;margin:20px auto;padding:5px;text-align:center;}
+  </style>
+</head>
+<body>
+  <div class="content">
+	<h1>电子名片生成</h1>
+	<div>
+	  <label>姓名:<input id="name" type="text"/></label><br/>
+	  <label>电话:<input id="tel" type="text"/></label><br/>
+	  <label>邮箱:<input id="email" type="text"/></label><br/>
+	  <label>主页:<input id="url" type="text"/></label><br/>
+	  <label>公司:<input id="company" type="text"/></label><br/>
+	  <label>职务:<input id="job" type="text"/></label><br/>
+	  <label>地址:<input id="address" type="text"/></label><br/>
+	  <label>简介:<input id="marsk" type="text"/></label><br/>
+      <button id="sub" onclick="autoVcard()">生成名片</button>
+	</div>
+    <div id="qrcode"></div>
+  </div>
+  <script type="text/javascript">
+	function getVal(id){
+	  return $('#'+id).val();
+	}
+	function utf16to8(str) {
+      var out, i, len, c;
+      out = "";
+      len = str.length;
+      for (i = 0; i < len; i++) {
+        c = str.charCodeAt(i);
+        if ((c >= 0x0001) && (c <= 0x007F)) {
+          out += str.charAt(i);
+        } else if (c > 0x07FF) {
+          out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+          out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
+          out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+        } else {
+          out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F));
+          out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+        }
+      }
+      return out;
+    }
+	function autoVcard(){
+	  $('#qrcode').html('');
+	  $('#qrcode').css('width','256px');
+	  $('#qrcode').css('height','256px');
+	  $('#qrcode').css('background','white');
+	  var name=getVal('name');
+	  var tel=getVal('tel');
+	  var email=getVal('email');
+	  var url=getVal('url');
+	  var company=getVal('company');
+	  var job=getVal('job');
+	  var address=getVal('address');
+	  var marsk=getVal('marsk');
+	  var text='BEGIN:VCARD\nVERSION:3.0\nFN:'+name+'\nTEL:'+tel+
+	      '\nEMAIL:'+email+'\nURL:'+url+'\nORG:'+company+
+		  '\nTITLE:'+job+'\nADR:'+address+'\nNOTE:'+marsk+'\nEND:VCARD';
+	  //$('#qrcode').qrcode('http://www.baidu.com');
+	  $('#qrcode').qrcode({
+	    render:'canvas',//'table'和'canvas'
+	    text:utf16to8(text),
+	    width:256,
+	    height:256,
+	    background:'white',
+	    foreground:'black'
+	  });
+	  /*var qrcode=new QRCode(utf16to8(text),{
+	    text:utf16to8(text),
+	    width:256,
+	    height:256,
+	    colorDark:'black',
+	    colorLight:'white',
+	    correctLevel:QRCode.CorrectLevel.H
+	  });
+	  qrcode.clear();
+	  qrcode.makeCode(utf16to8(text));*/
+	};
+  </script>
+</body>
+</html>

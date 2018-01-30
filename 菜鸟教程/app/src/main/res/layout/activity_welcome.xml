@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="#FFFFFF"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:orientation="vertical"
+		android:layout_centerInParent="true"
+		android:layout_gravity="center">
+
+		<ImageView
+			style="?android:attr/progressBarStyleLarge"
+			android:width="10dp"
+			android:height="10dp"
+			android:src="@drawable/cn"
+			android:layout_gravity="center"
+			android:background="@drawable/cn"
+			android:scaleType="centerInside"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="菜鸟教程"
+			android:layout_gravity="center"
+			android:textSize="25sp"
+			android:textColor="#000000"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="制作：范青锋"
+			android:layout_marginTop="10dp"
+			android:layout_gravity="center"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="交流QQ:1489641665"
+			android:layout_gravity="center"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="捐赠支持："
+			android:layout_marginTop="10dp"
+			android:gravity="left"
+			android:layout_gravity="left"/>
+
+		<ImageView
+			android:width="10dp"
+			android:height="10dp"
+			android:src="@drawable/jz"
+			android:layout_gravity="center"
+			android:scaleType="centerInside"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"/>
+
+	</LinearLayout>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="wrap_content"
+		android:text="内容归 @菜鸟教程 所有"
+		android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true"
+		android:textColor="#0000FF"
+		android:layout_marginBottom="5dp"
+		android:layout_gravity="bottom|center_horizontal"/>
+
+</RelativeLayout>
+

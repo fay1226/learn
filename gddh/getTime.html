@@ -1,0 +1,26 @@
+<html>
+<head>
+<style type="text/css">
+  #txt{margin:50% auto;text-align:center;font-size:150px;}
+</style>
+<script type="text/javascript">
+  function startTime(){
+	var today=new Date();
+	var h=checkTime(today.getHours());
+	var m=checkTime(today.getMinutes());
+	var s=checkTime(today.getSeconds());
+	document.getElementById ('txt').innerHTML=h+":"+m+":"+s;
+	t=setInterval('startTime()',1000);
+  }
+  function checkTime(i){
+	if (i<10){i="0"+i;}
+	return i;
+  }
+  window.onload=startTime;
+</script>
+</head>
+  <body>
+	<div id="txt"></div>
+  </body>
+</html>
+

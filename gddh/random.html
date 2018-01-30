@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>js设置随机颜色</title>
+    <style type="text/css">
+	  body{margin:0;padding:0;}
+	  #div{width:99%;height:100%;border:5px solid red;}
+	  #p{margin:40% auto;text-align:center;font-size:50px;}
+	</style>
+  </head>
+<body>
+  <div id="div" onclick="color()">
+	<p id="p">单击设置随机背景颜色</p>
+  </div>
+<script type="text/javascript">
+function getcl(){
+ var arr = [];//定义一个空的数组
+ var i =0;//为while循环定义i的初始值
+ var C = '0123456789abcdefABCDEF';
+ //定义颜色代码的字符串
+ while(i++ < 6){
+   x=Math.random()*C.length;
+   b=parseInt(x);//取0-22之前的整数给变量b
+   c=C.substr(b,1);
+   //由第b（0-22之间的整数）位开始取一个字符
+   arr.push(c);
+ }
+ var cl = "#"+ arr.join('');
+ //去掉之前数组之间的逗号，前面再加一个#号，
+ //这样颜色随机的颜色代码就生成了，并且把颜色代码赋值给变量cl
+ return cl;
+}
+var flag=0;
+var timer;
+function setColor(){
+ var cl=document.getElementById("div");
+ var color=getcl();
+ cl.style.borderColor=getcl();
+ cl.style.backgroundColor = color;
+ var p=document.getElementById("p");
+ p.innerHTML=color;
+ p.style.color=getcl();
+ p.style.fontSize="100px";
+ p.style.cssFloat="red";
+ //把上面得到的随机颜色代码赋值给DIV的背景颜色
+ timer=setTimeout(setColor,1000);
+}
+function color(){
+  flag=flag==0?1:0;
+  if(flag==1) setColor();
+  else clearTimeout(timer);
+}
+</script>
+</body>
+</html>

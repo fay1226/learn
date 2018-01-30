@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+ <head>
+   <meta charset="utf-8"/>
+   <meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no"/>
+   <meta name="chatting" content="fqf,fancy"/>
+   <link href="file:///android_asset/chat.css"rel="stylesheet"type="text/css"/>
+   <script type="text/javascript" src="file:///android_asset/jquery-1.11.0.min.js"></script>
+   <script type="text/javascript" src="file:///android_asset/chat.js"></script>
+   <title>么么哒</title>
+ </head>
+ <body>
+	<div id="hidden" class="xz" onclick="hideShow()">
+	  <img src="file:///android_asset/images/tx.gif" width="80px" height="80px"/>
+	</div>
+    <div class="center" id="chatContent">
+		<div class="header">
+		  <div class="hide" onclick="hide()">×</div>
+		  <div class="logo">
+		    <img src="file:///android_asset/images/tx.gif" width="60" height="60" />
+			  么么哒ω
+		  </div>
+		</div>
+		<div class="content">
+			<!--<div class="left">
+				<img src="../qp.png" title="1" height="50" width="50" />
+				<div class="msg1">Hi,您好！我是Fancy,很高兴和你聊天!</div>
+			</div>
+			<div class="right">
+				<div class="msg2">你好。</div>
+				<img src="../qp.png" title="1" height="50" width="50" />
+			</div>-->
+		</div>
+		<div class="send">
+		  <textarea autofocus="autofocus" id="massage" placeholder="聊天啦！么么哒～【发送“帮助”或“help”可获取使用帮助。发送“技能”可以了解我的更多技能噢。】"></textarea>
+		  <div class="bottom">
+			<span class="tips">
+			  <marquee id="tips" direction="left" scrollamount=5 onmouseover="this.stop()" onmouseout="this.start()">
+			  *发送“帮助”或“help”可获取使用帮助。发送“技能”可以了解我的更多技能噢。你可以这样问我呢:北京天气，明天北京到上海的航班/火车/汽车，……我可以给你讲笑话，陪你猜谜底，PK成语接龙，翻译，查日历，查酒店，找美食……
+			  </marquee>
+			</span>
+			<button id="send">OK</button>
+		  </div>
+	    </div>
+    </div>
+<script type="text/javascript">
+  //发送事件
+	$("#send").click(function(){
+	  var massage=$("#massage").val();//replace(/(^\s*)|(\s*$)/g,"");获取输入文本并去空格
+	  var content=$(".content");
+	  var tips=$("#tips");
+	  //alert(massage);
+	  if(massage.length>0){//判断输入框是否为空,或massage!=""
+	    var html="<div class='right'><div id='tx2'><img src='file:///android_asset/images/tx2.gif' height='50px' width='50px'/></div><span class='time2'>"+getTime()+"</span><div class='right_qp'></div><div id='msg2' class='txt' onclick='copy(this)'>"+massage+"</div></div>";
+	    content.append(html);
+	    $("#massage").val("");//清空文本框
+		content.scrollTop(content[0].scrollHeight);//移动到消息列表最底端
+		tips.css("color","green");//jq改变字体颜色
+		tips.html("*发送“帮助”或“help”可获取使用帮助。发送“技能”可以了解我的更多技能噢。你可以这样问我呢:北京天气，明天北京到上海的航班/火车/汽车，……我可以给你讲笑话，陪你猜谜底，PK成语接龙，翻译，查日历，查酒店，找美食……");
+	    $.ajax({
+	    /*type:"post",data:{"key":"c64b0904df7f4021a8acf0e07db75551","info":massage},url:"http://www.tuling123.com/openapi/api",*/
+	      type:"get",url:"http://www.tuling123.com/openapi/api?&key=c64b0904df7f4021a8acf0e07db75551&info="+massage,
+	      success:function(result){
+	          var obj=result;
+	          var tmp="<span>"+obj.text+"</span>";
+	          if(obj.url){
+	            tmp="<a href='"+obj.url+"'target='_blank'>"+obj.text+"</a>";
+	          }
+	          var htmlr="<div class='left'><div id='tx1'><img src='file:///android_asset/images/tx1.gif' height='50' width='50' /></div><span class='time1'>"+getTime()+"</span><div class='left_qp'></div><div id='msg1' class='txt' onclick='copy(this)'>"+tmp+"</div></div>";
+		      content.append(htmlr);
+			  content.scrollTop(content[0].scrollHeight);
+		  },
+		  error:function(){
+	          var tmp="<span>哎呀，消息被搞丢了！</span>";
+	          var htmlr="<div class='left'><div id='tx1'><img src='file:///android_asset/images/tx1.gif' height='50' width='50' /></div><span class='time1'>"+getTime()+"</span><div class='left_qp'></div><div id='msg1' class='txt' onclick='copy(this)'>"+tmp+"</div></div>";
+		      content.append(htmlr);
+			  content.scrollTop(content[0].scrollHeight); 
+		  }
+	    });
+      }else{
+	     document.getElementById("tips").style.color="red";//js改变背景颜色
+	     $("#tips").html("*沉默不是金，是金就要发光啦！(∗•ω•∗)");
+	  }
+    });
+</script>
+</body>
+</html>

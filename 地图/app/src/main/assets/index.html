@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.5, user-scalable=no, width=device-width">
+	<meta name="test" content="导航"/>
+	<link href="file:///android_asset/index.css"rel="stylesheet"type="text/css"/>
+	<script src="http://webapi.amap.com/maps?v=1.3&key=b4b044d98b18843fe413aa7af5adfda8"></script>
+
+	<script type="text/javascript" src="file:///android_asset/index.js"></script>
+  </head>
+  <body>
+	<h1>简易路线导航</h1>
+	<div class="writer">by:青锋</div>
+	<div class="top">
+	  <div class="con">
+		起始地:<input class="in" type="text" id="start"/><br/>
+	    目的地:<input class="in" type="text" id="end"/>
+	    <input type="button" class="btn" value="查找" onclick="search()"/>
+	  </div>
+	  <div class="con">
+	    关键词:<input class="in" type="text" id="site"/>
+	    <input type="button" class="btn" value="查询" onclick="search1()"/>
+	  </div>
+	</div>
+	  <div id="map">
+		<div id="panel"></div>
+	  </div>
+  </body>
+</html>

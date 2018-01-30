@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fancy浏览器</string>
+    <string name="url">输入网址</string>
+    <string name="back">上一页</string>
+    <string name="forward">下一页</string>
+    <string name="refresh">GO</string>
+    <string name="home">主页</string>
+</resources>

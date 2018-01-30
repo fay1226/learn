@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<script type="text/javascript">
+	  window.onload=function(){
+	    var tag=document.getElementById("tag");
+		tag.style.height=document.body.clientHeight+"px";
+		setInterval(function(){
+	      var bgcolor=Math.floor(Math.random()*16777216).toString(16);
+		  bgcolor="#"+("000000"+bgcolor).slice(-6);
+	      document.bgColor=bgcolor;
+		  tag.innerText=bgcolor+document.body.offsetHeight+"px";
+	    },1000);
+	  };
+	</script>
+  </head>
+  <body>
+	<div id="tag" style="text-align:center;font-size:80px;line-height:100%;"></div>
+  </body>
+</html>

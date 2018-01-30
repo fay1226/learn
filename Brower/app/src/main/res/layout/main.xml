@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="#FFFFFF">
+
+	<LinearLayout
+		android:id="@+id/urlLayout"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:focusable="true"
+		android:focusableInTouchMode="true">
+
+		<AutoCompleteTextView
+			android:id="@+id/url"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:hint="@string/url"
+			android:inputType="textUri"
+			android:completionHint="@string/url"
+			android:completionThreshold="1"
+			android:layout_weight="1.0"
+			android:lines="1"/>
+
+		<Button
+			android:id="@+id/refresh"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/refresh"
+			android:padding="13dp"
+			android:layout_marginLeft="2dp"
+			android:background="@drawable/btnstyle"/>
+
+	</LinearLayout>
+
+	<WebView
+		android:id="@+id/show"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_above="@+id/btnLayout"
+		android:layout_below="@+id/urlLayout"/>
+
+	<LinearLayout
+		android:id="@+id/btnLayout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:orientation="horizontal">
+
+		<Button
+			android:id="@+id/back"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1.0"
+			android:text="@string/back"
+			android:padding="10dp"
+			android:background="@drawable/btnstyle"
+			android:layout_margin="2dp"/>
+
+		<Button
+			android:id="@+id/home"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1.0"
+			android:text="@string/home"
+			android:padding="10dp"
+			android:background="@drawable/btnstyle"
+			android:layout_margin="2dp"/>
+
+		<Button
+			android:id="@+id/forward"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1.0"
+			android:text="@string/forward"
+			android:padding="10dp"
+			android:background="@drawable/btnstyle"
+			android:layout_margin="2dp"/>
+
+	</LinearLayout>
+
+</RelativeLayout>
+

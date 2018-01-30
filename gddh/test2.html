@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<meta name ="viewport" content ="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>toc机器人</title>
+    <style type="text/css">
+	  	*{
+			margin:0;
+			padding:0;
+		}
+    	.content{
+			width:100%;
+			height:500px;
+			overflow:auto;
+			border:2px solid red;
+			background-color:#abc;
+		}
+		.content .con1{
+			max-width:60%;
+			margin:10px;
+			color:yellow;
+			padding:5px;
+			padding-left:35px;
+			float:left;
+			border-radius:3px;
+			background:url(../p1.png) no-repeat center center;
+			-webkit-background-size:cover;
+			-moz-background-size:cover;
+			-o-background-size:cover;
+			background-size:cover;
+		}
+		.content .con2{
+			max-width:60%;
+		    padding:5px;
+			color:green;
+			padding-right:35px;
+			float:right;
+			border-radius:3px;
+			background:url(../p2.png) no-repeat center center;
+			-webkit-background-size:cover;
+			-moz-background-size:cover;
+			-o-background-size:cover;
+			background-size:cover;
+		}
+		#massage{
+			width:100%;
+			height:100px;
+			resize:none;
+			border:2px dotted blue;
+		}
+		.send{
+		  height:80px;
+		}
+		.send #send{
+			width:60px;
+			margin:right;
+		}
+	</style>
+  </head>
+  <body>
+	<div class="content">
+		<!--
+		<div class="con1">你好！</div>
+		<div class="con2">你好!</div>
+		-->
+	</div>
+	<div>
+	  <div>
+	  	<textarea id="massage" type="text" placeholder="描述一下你的问题，么么哒～"></textarea>
+	  </div>
+	  <div class="send">
+	  	<button id="send">发送</button>
+	  </div>
+	</div>
+	<script type="text/javascript" src="../jquery-1.11.0.min.js"></script>
+	<script type="text/javascript">
+	  //alert("gh");
+	  $(function(){
+	  	//alert("chj");
+		var htmlr="<div class='con1'>你好！有什么可以帮到你的吗？</div>";
+		$(".content").append(htmlr);
+	  });
+	  $("#send").click(function(){
+	  	var massage=$("#massage").val();
+		var content=$(".content");
+		//alert(massage);
+		if(massage!=""){
+		  var html="<div class='con2'>"+massage+"</div>";
+		  content.append(html);
+		  $("#massage").val(null);//清空文本框
+		  content.scrollTop(content[0].scrollHeight);
+		  $.ajax({
+			  type:"get",
+			  url:"http://www.tuling123.com/openapi/api?&key=c64b0904df7f4021a8acf0e07db75551&info="+massage,
+			  success:function(result){
+				  var obj=result;
+				  var tmp="<span>"+obj.text+"</span>";
+				  if(obj.url){
+					  tmp+="<a href='"+obj.url+"'target='_blank'>"+obj.text+"</a>";
+				  }
+				  var htmlr="<div class='con1'>"+tmp+"</div>";
+				  content.append(htmlr);
+			      content.scrollTop(content[0].scrollHeight);
+			  }
+		  });
+	    }
+	  });
+	  window.onkeydown=function(e){
+	  	var key=e.keyCode;
+		//alert(key);
+		if(key==13){
+			$("#send").click();
+		}
+	  };
+	</script>
+  </body>
+</html>

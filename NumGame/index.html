@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="user-scalable=no" name="viewport"/>
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body ondblclick="return false;">
+  <h2>点数游戏</h2>
+  <button id="next" class="tag">n</button>
+  <button id="last" class="tag">n</button>
+  <div class="draw">
+	<div id="time">Time</div>
+  </div>
+  <table id="tab"></table>
+  <div id="sises">
+    <button class="size" onclick="setSize(this)">3</button>
+    <button class="size" onclick="setSize(this)">4</button>
+    <button class="size" onclick="setSize(this)">5</button>
+    <button class="size" onclick="setSize(this)">6</button>
+    <button class="size" onclick="setSize(this)">7</button>
+  </div>
+<script type="text/javascript">
+  window.onload=function(){
+    var tab=document.getElementById("tab");
+	tab.style.width=innerWidth+"px";
+	tab.style.height=innerWidth+"px";
+	var bgcolor=Math.floor(Math.random()*16777216).toString(16);
+    bgcolor="#"+("000000"+bgcolor).slice(-6);
+	tab.style.backgroundColor=bgcolor;
+	tab.innerHTML="<tr><td>☬<br/>选择一个模式开始<br/></td></tr>";
+	var tags=document.getElementsByTagName("button");
+	var rotate=5;
+	setInterval(function(){
+	  rotate=rotate<=355?rotate+5:5;
+	  for(var i=0;i<tags.length;i++){
+	    tags[i].style.transform="rotate("+rotate+"deg)";
+	  }
+	},100);
+  };
+  //设置难度
+  function setSize(obj){
+    clearInterval(timeSet);
+	setTimeout(time,500);
+	document.getElementById("last").innerText="1";
+	document.getElementById("next").innerText="n";
+	var size=document.getElementsByClassName("size");
+	for(var i=0;i<size.length;i++){
+	  size[i].style.boxShadow="inset 0 0 30px 10px #6af";
+	}
+	obj.style.boxShadow="inset 0 0 30px 10px red";
+	var number=parseInt(obj.innerText);
+	innerTab(number);
+	setNum(number);
+	doGame(number*number);
+  }
+  //产生随机数
+  function randNum(number){
+    var size=number*number;
+	var num=new Array(size);
+	var count=0;
+	while(count<size){
+		var math=Math.floor(Math.random()*size+1);
+		var flag=true;
+		for(var i=0;i<count;i++){
+		  if(math==num[i]){
+		    flag=false;
+		    break;
+		  }
+		}
+		if(flag){
+		  num[count]=math;
+	      count++;
+		}
+	}
+	return num;
+  }
+  //设置表格数字
+  function setNum(number){
+    var num=randNum(number);
+    var tds=document.getElementsByTagName("td");
+	for(var i=0;i<tds.length;i++){
+	  var bgcolor=Math.floor(Math.random()*16777216).toString(16);
+      bgcolor="#"+("000000"+bgcolor).slice(-6);
+	  tds[i].style.backgroundColor=bgcolor;
+	  tds[i].style.color="white";
+	  tds[i].style.fontSize="60px";
+	  tds[i].innerHTML=num[i];
+	}
+  }
+  //创建表格
+  function innerTab(number){
+    var tab=document.getElementById("tab");
+	while(tab.hasChildNodes()){
+	  tab.removeChild(tab.firstChild);
+	}
+	for(var i=0;i<number;i++){
+	  var tr=document.createElement("tr");
+	  tab.appendChild(tr);
+	}
+	var trs=document.getElementsByTagName("tr");
+	for(var j=0;j<trs.length;j++){
+	  for(var i=0;i<number;i++){
+	    var td=document.createElement("td");
+		trs[j].appendChild(td);
+	  }
+	}
+  }
+  //计时事件
+  var timeSet=null;
+  function time(){
+    var go=document.getElementById("time");
+	go.style.width="100%";
+	go.style.color="";
+	clearInterval(timeSet);
+	var start=new Date().getTime();
+	timeSet=setInterval(function(){
+	  var end=new Date().getTime();
+	  var time=end-start;
+	  var sec=Math.floor(time/1000/60%60);
+	  var mm=Math.floor(time/1000%60);
+	  var ms=Math.floor(time%1000);
+	  if(sec<10) sec="0"+sec;
+	  if(sec==0) sec="";
+	  else sec=sec+"'";
+	  if(sec==""&&mm==0){
+	    mm="";
+	  }else if(mm<10) mm="0"+mm+"\"";
+	  else mm=mm+"\"";
+	  if(ms<10) ms="00"+ms;
+	  else if(ms>=10&&ms<100) ms="0"+ms;
+	  time=sec+mm+ms;
+	  go.innerHTML=time;
+	  if(sec=="02'"){
+	    clearInterval(timeSet);
+		go.innerText="TIME OUT!";
+		go.style.color="red";
+        var tab=document.getElementById("tab");
+	    var bgcolor=Math.floor(Math.random()*16777216).toString(16);
+        bgcolor="#"+("000000"+bgcolor).slice(-6);
+	    tab.style.backgroundColor=bgcolor;
+        tab.innerHTML="<tr><td>´◑д◐｀<br/>你已经out了<br/>重新选择一个模式继续吧</td></tr>";
+		var size=document.getElementsByClassName("size");
+	    for(var i=0;i<size.length;i++){
+	      size[i].style.boxShadow="inset 0 0 30px 10px #6af";
+	    }
+	  }
+	},100);
+  };
+  //游戏规则
+  function doGame(end){
+    var start=1,stop=0;
+	var trs=document.getElementsByTagName("tr");
+	for(var i=0;i<trs.length;i++){
+	  var tds=trs[i].getElementsByTagName("td");
+	  for(var j=0;j<tds.length;j++){
+	    var color;
+	    tds[j].addEventListener("mousedown",function(){
+		  color=this.style.backgroundColor;
+		  var tag=document.getElementById("time");
+		  var text=this.innerText;
+		  if(text!=start&&start<end){
+		    this.style.backgroundColor="red";
+			tag.style.backgroundColor=color;
+		  }else{
+		    this.style.backgroundColor="blue";
+			tag.style.backgroundColor="#6af";
+			document.getElementById("next").innerText=start;
+			if(text==end&&stop==0){
+			  clearInterval(timeSet);
+			  var tab=document.getElementById("tab");
+	          var time=document.getElementById("time").innerText;
+			  tab.innerHTML="<tr><td>♚<br/>挑战完成<br/>成绩："+time+"<br/>选择一个模式继续</td></tr>";
+	          var size=document.getElementsByClassName("size");
+	          for(var i=0;i<size.length;i++){
+	            size[i].style.boxShadow="inset 0 0 30px 10px #6af";
+	          }
+			  stop=1;
+			  return;
+			}
+			if(start<end){
+			  start++;
+			  document.getElementById("last").innerText=start;
+			}
+		  }
+		},true);
+		tds[j].addEventListener("mouseup",function(){
+		  var text=this.innerText;
+		  if(text==start-1){
+		    this.style.backgroundColor="";
+			this.style.border="1px solid black";
+			this.style.color="";
+		  }else{
+		    this.style.backgroundColor=color;
+		  }
+		},true);
+	  }
+	}
+  }
+</script>
+</body>
+</html>
