@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<body> <script>
+ (function () {
+/*var checkObject1={
+	checkName:function(){
+		console.log("checkName1.");
+		return this;
+	},
+	checkPassword:function(){
+		console.log("checkPassword1.");
+		return this;
+	}
+};
+checkObject1.checkName().checkPassword();
+
+//放入原型对象
+var checkObject=new Function();
+//var checkObject=function(){};
+checkObject.prototype={
+	checkName:function(){
+		console.log("checkName.");
+		return this;
+	},
+	checkPassword:function(){
+		console.log("checkPassword.");
+		return this;
+	}
+};
+var check=new checkObject();
+check.checkName().checkPassword();
+
+//var methods=new Function();
+/*var methods=function(){};
+methods.addMethod('checkName',function(){
+	console.log("checkName.");
+	return this;
+}).addMethod('checkPassword',function(){
+	console.log("checkPassword.");
+	return this;
+});
+methods.addMethod('checkEmail',function(){
+	console.log("checkEmail.");
+	return this;
+});*/
+function inheritObject(o){
+	function F(){}
+	F.prototype=o;
+	return new F();
+}
+var Book={
+	name:"Js",
+	likeBook:["css","html"]
+};
+function createBook(obj){
+	var book=new inheritObject(obj);
+	book.getName=function(){
+		console.log(name);
+	};
+	return book;
+}
+var newBook=createBook(Book);
+console.log(newBook.name);
+console.log(newBook.likeBook);
+newBook.getName();
+
+//简单工厂模式
+//篮球类
+var Basketball=function(intro){
+	this.intro=intro;
+};
+Basketball.prototype={
+	getNumber:function(){
+		console.log("5人。");
+	},
+	getBallSize:function(){
+		console.log("大球");
+	}
+};
+//足球类
+var Football=function(intro){
+	this.intro=intro;
+};
+Football.prototype={
+	getNumber:function(){
+		console.log("11人。");
+	},
+	getBallSize:function(){
+		console.log("大球");
+	}
+};
+//工厂
+var SportFactory=function(name){
+	switch(name){
+		case 'NBA':return new Basketball(name);
+		case 'WorldCup':return new Football(name);
+	}
+};
+//测试工厂
+var football=new SportFactory("WorldCup");
+console.log(football);
+console.log(football.intro);
+football.getNumber();
+
+
+})();alert('$$$FINISHED$$$');
+</script> </body>

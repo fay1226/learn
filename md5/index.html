@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>md5测试</title>
+  </head>
+
+  <body>
+	<input type="file" id="file" />
+	<div id="box"></div>
+	<button id="cal" type="button" onclick="calculate()">计算md5</button>
+  </body>
+
+<script type="text/javascript" src="/storage/emulated/0/AppProjects/HashCode/js/md5.js" ></script>
+<script type="text/javascript" src="/storage/emulated/0/AppProjects/HashCode/js/jquery-1.11.0.min.js" ></script>
+<script type="text/javascript">
+  function calculate(){
+    var log=md5_vm_test();
+	alert(log);
+  }
+</script>
+</html>

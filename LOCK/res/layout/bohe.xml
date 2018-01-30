@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:orientation="vertical"
+		android:gravity="top|center_horizontal"
+		android:background="@drawable/woju">
+
+		<ProgressBar
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_width="wrap_content"
+			android:shadowColor="#BB82E5"
+			android:shadowDx="0"
+			android:shadowDy="0"
+			android:shadowRadius="3"
+			android:textColor="#EE4F3B"
+			android:textSize="20sp"
+			android:layout_marginBottom="10dp"
+			android:id="@+id/qq"
+			android:text="我是Fancy，我为自己代言"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:layout_width="wrap_content"
+			android:id="@+id/tv"
+			android:textSize="17sp"
+			android:shadowColor="#66C1F6"
+			android:shadowDx="0"
+			android:shadowDy="0"
+			android:shadowRadius="3"
+			android:textColor="#EAB1F7"
+			android:layout_marginBottom="10dp"/>
+
+		<EditText
+			android:layout_height="45dp"
+			android:ems="10"
+			android:layout_width="200dp"
+			android:id="@+id/ed"
+			android:paddingLeft="8dp"
+			android:layout_marginBottom="8dp"
+			android:shadowColor="#FF0F00"
+			android:shadowDx="0"
+			android:shadowDy="0"
+			android:shadowRadius="3"
+			android:textColor="#EB852E"/>
+
+		<Button
+			android:layout_height="48dp"
+			android:layout_width="250dp"
+			android:shadowColor="#FF0F00"
+			android:shadowDx="0"
+			android:shadowDy="0"
+			android:shadowRadius="3"
+			android:textColor="#EB3A2E"
+			android:id="@+id/bt"
+			android:background="@drawable/tm"
+			android:textSize="22sp"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:layout_width="wrap_content"
+			android:id="@+id/bohe"
+			android:shadowColor="#FF0F00"
+			android:shadowDx="0"
+			android:shadowDy="0"
+			android:shadowRadius="3"
+			android:textColor="#EB852E"
+			android:layout_marginBottom="10dp"
+			android:text="你被整了"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:layout_width="wrap_content"
+			android:id="@+id/q1"
+			android:shadowColor="#F170CB"
+			android:shadowDx="0"
+			android:shadowDy="0"
+			android:shadowRadius="3"
+			android:textColor="#FA8D86"
+			android:layout_marginBottom="10dp"
+			android:text="QQ123456789"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:layout_width="wrap_content"
+			android:id="@+id/q2"
+			android:shadowColor="#DD88EB"
+			android:shadowDx="0"
+			android:shadowDy="0"
+			android:shadowRadius="3"
+			android:textColor="#88ECC2"
+			android:layout_marginBottom="10dp"
+			android:text="密码:12345"/>
+
+	</LinearLayout>
+
+</LinearLayout>
+
