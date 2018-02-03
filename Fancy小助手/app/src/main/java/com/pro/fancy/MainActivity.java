@@ -8,6 +8,7 @@ import android.widget.*;
 import android.content.*;
 import android.media.*;
 import android.graphics.*;
+import com.swetake.util.*;
 
 public class MainActivity extends Activity 
 {

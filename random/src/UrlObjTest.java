@@ -21,6 +21,7 @@ public class UrlObjTest
 			while((read=br.readLine())!=null){
 				result.append(read+"\n");
 			}
+			
 			File file=new File("/storage/emulated/0/AppProjects/random/src/"+UUID.randomUUID()+".html");
 			if(!file.exists()){
 				file.createNewFile();
@@ -28,6 +29,7 @@ public class UrlObjTest
 			fw=new FileWriter(file);
 			bw=new BufferedWriter(fw);
 			bw.write(result.toString());
+			System.out.println("写入成功。");
 		}catch (IOException e){
 			e.printStackTrace();
 		}finally{
@@ -39,6 +41,5 @@ public class UrlObjTest
 				e.printStackTrace();
 			}
 		}
-		System.out.println("写入成功。");
 	}
 }
