@@ -1,377 +1,425 @@
 <!doctype html>
 <html>
- <head>
-   <meta charset="utf-8"/>
-   <meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no"/>
-   <meta name="chatting" content="fqf,fancy"/>
-   <title>智能Fancy小助手</title>
- 	<style type="text/css">
- 	*{
-	    margin:0;
-	    padding:0;
-		outline:none;
-		word-break:break-all;
-	}
-	html,body{
-		background: url(../bg.jpg);
-		background-size: cover;
-    	background-repeat: no-repeat;
-		font-family:"宋体";
-		color:#666;
-		height:100%;
-		overflow:auto;
-	}
-	.center{
-		width:600px;
-		margin:50px auto;
-		box-shadow:-5px -5px 30px black;
-		border-radius:10px;
-	}
-	.header{
-	    width:100%;
-		height:70px;
-    	background-color: #5ef;
-    	font: 15px/40px 行楷;
-    	font-size: 35px;
-    	border-radius: 10px 10px 0px 0px;
-		position:relative;
-	}
-	.header.logo{
-		width:335px;
-		height:80px;
-		align:center;
-		border-radius:10px 10px 0px 0px;
-		position:absolute;
-		bottom:0px;
-	}
-	.hide{
-	    position:relative;
-		width: 25px;
-    	height: 25px;
-    	float: right;
-		margin:5px;
-    	font-size: 70%;
-		line-height:25px;
-    	text-align: center;
-    	color: white;
-		background-color:red;
-    	border-radius: 50px;
-	}
-	#hidden{
-	    width:80px;
-		height:80px;
-	    /*margin:2% auto;*/
-		position:absolute;
-		top:5px;
-		left:5px;
-		z-index:1;
-		background-color:#5ef;
-		background-size:cover;
-		border-radius:50px;
-		box-shadow:0 0 50px black;
-		display:none;
-		transform:rotate(360deg);
-        -ms-transform:rotate(360deg); /* IE 9 div旋转360°*/
-        -moz-transform:rotate(360deg); /* Firefox */
-        -webkit-transform:rotate(360deg); /* Safari 和 Chrome */
-        -o-transform:rotate(360deg); /* Opera */
-	}
-	.send{
-	    width:100%;
-		height:157px;
-		background-color: #5ef;
-   		border-radius: 0px 0px 10px 10px;
-	}
-	.send #massage{
-		border-right: 0;
-    	border-top: #000 1px solid;
-    	border-left: 0;
-    	border-bottom: #000 1px solid;
-		width:580px;
-		height:70px;
-		background-color:#EFD;
-		resize:none;
-		font-size:20px;
-		color:red;
-		padding:10px;
-	}
-	.send .bottom{
-	    margin:12px;
-    	font-size:18px;
-    	color:black;
-	}
-	.bottom #tips{
-		font-size:25px;
-		color:#4FCC00;
-	}
-	#send{
-		float: right;
-		margin-top:-10px;
-    	border: 1px solid white;
-    	width: 55px;
-		height:55px;
-    	font: 200%/50% 微软雅黑;
-		color:white;
-    	background-color: #2af;
-    	border-radius:50px;
-    }
-	#send:hover{
-		cursor:pointer;
-	    background-color:black;
-		transition:all ease 2s;
-	}
-	.content{
-	    width:100%;
-		height:580px;
-		overflow:auto;
-		outline:none;
-		background:url(../bg2.jpg);
-		transparent:50%;
-		background-size:100% 140%;
-		background-position:30% 10%;
-    	background-repeat: no-repeat;
-	}
-	.content .left{
-		margin:10px;
-		margin-left:10px;
-		width:90%;
-		float:left;
-		text-align:left;
-	}
-	.content .right{
-		margin:10px;
-		width:90%;
-		float:right;
-		text-align:right;
-	}
-	#tx1{
-	    width:50px;
-		height:50px;
-		background-color:#ABF;
-		border:white 2px solid;
-		border-radius:50px;
-		overflow:hidden;
-		float:left;
-	}
-	.content #msg1{
-	    min-width:40px;
-		min-height:40px;
-	    max-width:60%;
-		margin-top:10px;
-		float:left;
-		line-height:150%;
-		border-radius:5px;
-		box-shadow:inset 0 0 35px 10px rgba(255,192,203,1);
-		background-color:rgba(255,192,203,0.3);
-		padding:10px;
-		font-size:150%;
-		color:#CF9;
-	}
-	.content .left_qp{
-	  width:0px;
-	  height:0px;
-	  border-width:8px 10px 8px;
-	  border-style:solid;
-	  border-color:transparent rgba(255,192,203,0.9) transparent transparent;
-	  margin-top:15px;
-	  margin-left:-5px;
-	  float:left;
-	}
-	.time1{
-	  border:1px solid gray;
-	  border-radius:50px;
-	  background:white;
-	  padding:3px;
-	  color:black;
-	  font-size:60%;
-	  margin-left:-25px;
-	}
-	.time2{
-	  border:1px solid gray;
-	  border-radius:50px;
-	  background:white;
-	  padding:3px;
-	  color:black;
-	  font-size:60%;
-	  margin-right:-25px;
-	}
-	#tx2{
-	    width:50px;
-		height:50px;
-		background-color:#FBA;
-		border:white 2px solid;
-		border-radius:50px;
-		overflow:hidden;
-	    float:right;
-	}
-	.content #msg2{
-	    min-width:40px;
-		min-height:40px;
-	    max-width:60%;
-		margin-top:10px;
-		line-height:150%;
-		border-radius:5px;
-		box-shadow:inset 0 0 35px 10px rgba(130,255,0,1);
-		background-color:rgba(130,225,0,0.3);
-		float:right;
-		text-align:left;
-		font-size:150%;
-		color:#F45;
-		padding:10px;
-	}
-	.content .right_qp{
-	  width:0px;
-	  height:0px;
-	  border-width:8px 10px 8px;
-	  border-style:solid;
-	  border-color:transparent transparent transparent rgba(130,255,0,0.9);
-	  margin-top:15px;
-	  margin-right:-5px;
-	  float:right;
-	}
- 	</style>
- </head>
-  <body>
-	<div id="hidden" class="xz" onclick="hideShow()"><img src="../tx.gif" width="80px" height="80px"/></div>
-    <div class="center" id="chatContent">
-		<div class="header">
-		  <div class="hide" onclick="hide()">×</div>
-		  <div class="logo">
-		    <img src="../tx.gif" width="60" height="60" />
-			  智能Fancy小助手
-		  </div>
-		</div>
-		<div class="content">
-			<!--<div class="left">
-				<img src="../qp.png" title="1" height="50" width="50" />
-				<div class="msg1">Hi,您好！我是Fancy,很高兴和你聊天!</div>
-			</div>
-			<div class="right">
-				<div class="msg2">你好。</div>
-				<img src="../qp.png" title="1" height="50" width="50" />
-			</div>-->
-		</div>
-		<div class="send">
-		  <textarea autofocus="autofocus" id="massage" placeholder="聊天啦！么么哒～"></textarea>
-		  <div class="bottom">
-			<marquee width=300px id="tips" direction=left scrollamount=4 onmouseover="this.stop()" onmouseout="this.start()">
-			  *青锋的私人小助手……</marquee>
-			<button id="send">OK</button>
-		  </div>
-	    </div>
+<head>
+    <meta charset="utf-8"/>
+    <link href="tx.gif" rel="shortcut icon" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no"/>
+    <meta name="chatting" content="fqf,fancy"/>
+    <title>Lucy小助手</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+            word-break: break-all;
+        }
+
+        html, body {
+            background: url(bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: "宋体";
+            color: #666;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .center {
+            width: 90%;
+            max-width: 800px;
+            height: 70%;
+            max-height: 1500px;
+            margin: 50px auto;
+            box-shadow: -5px -5px 30px black;
+            border-radius: 10px;
+        }
+
+        .header {
+            width: 100%;
+            height: 70px;
+            background-color: #5ef;
+            font: 15px/40px 行楷;
+            font-size: 35px;
+            border-radius: 10px 10px 0px 0px;
+            position: relative;
+        }
+
+        .header.logo {
+            width: 335px;
+            height: 80px;
+            align: center;
+            border-radius: 10px 10px 0px 0px;
+            position: absolute;
+            bottom: 0px;
+        }
+
+        .hide {
+            position: relative;
+            width: 25px;
+            height: 25px;
+            float: right;
+            margin: 5px;
+            font-size: 70%;
+            line-height: 25px;
+            text-align: center;
+            color: white;
+            background-color: red;
+            border-radius: 50px;
+        }
+
+        #hidden {
+            width: 80px;
+            height: 80px;
+            /*margin:2% auto;*/
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            z-index: 1;
+            background-color: #5ef;
+            background-size: cover;
+            border-radius: 50px;
+            box-shadow: 0 0 50px black;
+            display: none;
+            transform: rotate(360deg);
+            -ms-transform: rotate(360deg); /* IE 9 div旋转360°*/
+            -moz-transform: rotate(360deg); /* Firefox */
+            -webkit-transform: rotate(360deg); /* Safari 和 Chrome */
+            -o-transform: rotate(360deg); /* Opera */
+        }
+
+        .send {
+            width: 100%;
+            height: 20%;
+            max-height: 220px;
+            min-height: 200px;
+            background-color: #5ef;
+            border-radius: 0px 0px 10px 10px;
+        }
+
+        .send #massage {
+            border-right: 0;
+            border-top: #000 1px solid;
+            border-left: 0;
+            border-bottom: #000 1px solid;
+            width: 100%;
+            min-height: 70px;
+            height: 80%;
+            max-height: 120px;
+            background-color: #EFD;
+            resize: none;
+            font-size: 20px;
+            color: red;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .send .bottom {
+            padding: 10px 0;
+            height: 20%;
+            min-height: 60px;
+            max-height: 70px;
+            margin: 12px;
+            font-size: 18px;
+            color: black;
+        }
+
+        .bottom #tips {
+            font-size: 25px;
+            color: #66F;
+        }
+
+        #send {
+            float: right;
+            margin-top: -10px;
+            border: 1px solid white;
+            width: 55px;
+            height: 55px;
+            font: 200%/50% 微软雅黑;
+            color: white;
+            background-color: #2af;
+            border-radius: 50px;
+        }
+
+        #send:hover {
+            cursor: pointer;
+            background-color: black;
+            transition: all ease 2s;
+        }
+
+        .content {
+            width: 100%;
+            height: 90%;
+            overflow: auto;
+            outline: none;
+            background: url(bg0.jpg);
+            background-size: 100% 140%;
+            background-position: 30% 10%;
+            background-repeat: no-repeat;
+        }
+
+        .content .left {
+            margin: 10px;
+            margin-left: 10px;
+            width: 90%;
+            float: left;
+            text-align: left;
+        }
+
+        .content .right {
+            margin: 10px;
+            width: 90%;
+            float: right;
+            text-align: right;
+        }
+
+        #tx1 {
+            width: 50px;
+            height: 50px;
+            background-color: #ABF;
+            border: white 2px solid;
+            border-radius: 50px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .content #msg1 {
+            min-width: 40px;
+            min-height: 40px;
+            max-width: 60%;
+            margin-top: 10px;
+            float: left;
+            line-height: 150%;
+            border-radius: 5px;
+            box-shadow: inset 0 0 35px 10px rgba(255, 192, 203, 1);
+            background-color: rgba(255, 192, 203, 0.3);
+            padding: 10px;
+            font-size: 150%;
+            color: #CF9;
+        }
+
+        .content .left_qp {
+            width: 0px;
+            height: 0px;
+            border-width: 8px 10px 8px;
+            border-style: solid;
+            border-color: transparent rgba(255, 192, 203, 0.9) transparent transparent;
+            margin-top: 15px;
+            margin-left: -5px;
+            float: left;
+        }
+
+        .time1 {
+            border: 1px solid gray;
+            border-radius: 50px;
+            background: white;
+            padding: 3px;
+            color: black;
+            font-size: 60%;
+            margin-left: -25px;
+        }
+
+        .time2 {
+            border: 1px solid gray;
+            border-radius: 50px;
+            background: white;
+            padding: 3px;
+            color: black;
+            font-size: 60%;
+            margin-right: -25px;
+        }
+
+        #tx2 {
+            width: 50px;
+            height: 50px;
+            background-color: #FBA;
+            border: white 2px solid;
+            border-radius: 50px;
+            overflow: hidden;
+            float: right;
+        }
+
+        .content #msg2 {
+            min-width: 40px;
+            min-height: 40px;
+            max-width: 60%;
+            margin-top: 10px;
+            line-height: 150%;
+            border-radius: 5px;
+            box-shadow: inset 0 0 35px 10px rgba(130, 255, 0, 1);
+            background-color: rgba(130, 225, 0, 0.3);
+            float: right;
+            text-align: left;
+            font-size: 150%;
+            color: #F45;
+            padding: 10px;
+        }
+
+        .content .right_qp {
+            width: 0px;
+            height: 0px;
+            border-width: 8px 10px 8px;
+            border-style: solid;
+            border-color: transparent transparent transparent rgba(130, 255, 0, 0.9);
+            margin-top: 15px;
+            margin-right: -5px;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div id="hidden" class="xz" onclick="hideShow()"><img src="tx.gif" width="80px" height="80px"/></div>
+<div class="center" id="chatContent">
+    <div class="header">
+        <div class="hide" onclick="hide()">×</div>
+        <div class="logo" style="display: flex;align-items: center;">
+            <img src="tx.gif" width="60" height="60"/>
+            <span style="text-indent: 15px;">Lucy小助手</span>
+        </div>
     </div>
-  <script type="text/javascript" src="../jquery-1.11.0.min.js"></script>
-  <script type="text/javascript">
-	function getTime(){
-	  var date=new Date();
-	  var hour=date.getHours();
-	  var min=date.getMinutes();
-	  if(hour<10) hour="0"+hour;
-	  if(min<10) min="0"+min;
-	  return hour+":"+min;
-	}
-	//初始事件(载入事件)
-	window.onload=setTimeout(function(){
-	  var date=new Date();
-	  var hour=date.getHours();
-	  var log="";
-	  if(hour>5&&hour<11){
-	    log="早上好！";
-	  }else if(hour>10&&hour<13){
-	    log="中午好！";
-	  }else if(hour>12&&hour<20){
-	    log="下午好！";
-	  }else log="晚上好！";
-  	  var htmls="<div class='left'><div id='tx1'><img src='../tx1.gif' height='50px' width='50px'/></div><span class='time1'>"+getTime()+"</span><div class='left_qp'></div><div id='msg1' class='txt' onclick='copy(this)'>"+log+"我可以聊天，查天气，查时间日历，查单词，查车次，查酒店，查图片，翻译，……随你选!</div></div>";
-	  $(".content").append(htmls);
-	},3000);
-	//发送事件
-	$("#send").click(function(){
-	  var massage=$("#massage").val().replace(/(^\s*)|(\s*$)/g,"");//获取输入文本并去空格
-	  var content=$(".content");
-	  var tips=$("#tips");
-	  //alert(massage);
-	  if(massage.length>0){//判断输入框是否为空,或massage!=""
-	    var html="<div class='right'><div id='tx2'><img src='../tx2.gif' height='50px' width='50px'/></div><span class='time2'>"+getTime()+"</span><div class='right_qp'></div><div id='msg2' class='txt' onclick='copy(this)'>"+massage+"</div></div>";
-	    content.append(html);
-	    $("#massage").val("");//清空文本框
-		content.scrollTop(content[0].scrollHeight);//移动到消息列表最底端
-		tips.css("color","green");//jq改变字体颜色
-		tips.css("backgroundColor","");
-		tips.html("*青锋的私人小助手……");
-	    $.ajax({
-	      type:"post",
-		  data:{"key":"c64b0904df7f4021a8acf0e07db75551","info":massage},
-		  url:"http://www.tuling123.com/openapi/api",
-	      //type:"get",
-		  //url:"http://www.tuling123.com/openapi/api?&key=c64b0904df7f4021a8acf0e07db75551&info="+massage,
-	      success:function(result){
-	          var obj=result;
-	          var tmp="<span>"+obj.text+"</span>";
-	          if(obj.url){
-	            tmp="<a href='"+obj.url+"'target='_blank'>"+obj.text+"</a>";
-	          }
-	          var htmlr="<div class='left'><div id='tx1'><img src='../tx1.gif' height='50' width='50' /></div><span class='time1'>"+getTime()+"</span><div class='left_qp'></div><div id='msg1' class='txt' onclick='copy(this)'>"+tmp+"</div></div>";
-		      content.append(htmlr);
-			  content.scrollTop(content[0].scrollHeight);
-		  },
-		  error:function(){
-	          var tmp="<div id='msg1' class='txt' onclick='copy(this)'><span>哎呀，消息被搞丢了！</span></div>";
-	          var htmlr="<div class='left'><div id='tx1'><img src='../tx1.gif' height='50' width='50' /></div><span class='time2'>"+getTime()+"</span><div class='left_qp'></div>"+tmp+"</div>";
-		      content.append(htmlr);
-			  content.scrollTop(content[0].scrollHeight); 
-		  }
-	    });
-      }else{
-	     var tip=document.getElementById("tips");
-		 tip.style.color="white";//设置字体颜色
-		 tip.style.backgroundColor="red";//js改变背景颜色
-	     $("#tips").html("*沉默不是金！(∗•ω•∗)");
-	  }
+    <div class="content">
+        <!--<div class="left">
+            <img src="../qp.png" title="1" height="50" width="50" />
+            <div class="msg1">Hi,您好！我是Fancy,很高兴和你聊天!</div>
+        </div>
+        <div class="right">
+            <div class="msg2">你好。</div>
+            <img src="../qp.png" title="1" height="50" width="50" />
+        </div>-->
+    </div>
+    <div class="send">
+        <textarea autofocus="autofocus" id="massage" placeholder="聊天啦！么么哒～"></textarea>
+        <div class="bottom">
+            <marquee id="tips" direction="left" scrollamount="6" style="width: 90%; color: green;"
+                     onmouseover="this.stop()" onmouseout="this.start()">
+                *Lucy的私人小助手可以聊天，成语接龙，翻译，查天气，查时间日历，查单词，查车次，查酒店，查百科，搜图片……
+            </marquee>
+            <button id="send">OK</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+    function getTime() {
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        if (hour < 10) hour = "0" + hour;
+        if (min < 10) min = "0" + min;
+        return hour + ":" + min;
+    }
+
+    //初始事件(载入事件)
+    window.onload = setTimeout(function () {
+        var date = new Date();
+        var hour = date.getHours();
+        var log = "";
+        if (hour > 5 && hour < 11) {
+            log = "早上好！";
+        } else if (hour > 10 && hour < 13) {
+            log = "中午好！";
+        } else if (hour > 12 && hour < 20) {
+            log = "下午好！";
+        } else log = "晚上好！";
+        var htmls = "<div class='left'><div id='tx1'><img src='tx1.gif' height='50px' width='50px'/></div><span class='time1'>" + getTime() + "</span><div class='left_qp'></div><div id='msg1' class='txt' onclick='copy(this)'>" + log + "很高兴和你聊天！</div></div>";
+        $(".content").append(htmls);
+    }, 3000);
+    //发送事件
+    $("#send").click(function () {
+        var massage = $("#massage").val().replace(/(^\s*)|(\s*$)/g, "");//获取输入文本并去空格
+        var content = $(".content");
+        var tips = $("#tips");
+        //alert(massage);
+        if (massage.length > 0) {//判断输入框是否为空,或massage!=""
+            var html = "<div class='right'><div id='tx2'><img src='tx2.gif' height='50px' width='50px'/></div><span class='time2'>" + getTime() + "</span><div class='right_qp'></div><div id='msg2' class='txt' onclick='copy(this)'>" + massage + "</div></div>";
+            content.append(html);
+            $("#massage").val("");//清空文本框
+            content.scrollTop(content[0].scrollHeight);//移动到消息列表最底端
+            tips.css("color", "green");//jq改变字体颜色
+            tips.css("backgroundColor", "");
+            tips.html("*Lucy的私人小助手可以聊天，成语接龙，翻译，查天气，查时间日历，查单词，查车次，查酒店，查百科，搜图片……");
+            $.ajax({
+                type: "post",
+                data: {"key": "c64b0904df7f4021a8acf0e07db75551", "info": massage},
+                url: "http://www.tuling123.com/openapi/api",
+                //type:"get",
+                //url:"http://www.tuling123.com/openapi/api?&key=c64b0904df7f4021a8acf0e07db75551&info="+massage,
+                success: function (result) {
+                    var obj = result;
+                    var tmp = "<span>" + obj.text + "</span>";
+                    if (obj.url) {
+                        tmp = "<a href='" + obj.url + "'target='_blank'>" + obj.text + "</a>";
+                    }
+                    var htmlr = "<div class='left'><div id='tx1'><img src='tx1.gif' height='50' width='50' /></div><span class='time1'>" + getTime() + "</span><div class='left_qp'></div><div id='msg1' class='txt' onclick='copy(this)'>" + tmp + "</div></div>";
+                    content.append(htmlr);
+                    content.scrollTop(content[0].scrollHeight);
+                },
+                error: function () {
+                    var tmp = "<div id='msg1' class='txt' onclick='copy(this)'><span>哎呀，消息被搞丢了！</span></div>";
+                    var htmlr = "<div class='left'><div id='tx1'><img src='tx1.gif' height='50' width='50' /></div><span class='time2'>" + getTime() + "</span><div class='left_qp'></div>" + tmp + "</div>";
+                    content.append(htmlr);
+                    content.scrollTop(content[0].scrollHeight);
+                }
+            });
+        } else {
+            var tip = document.getElementById("tips");
+            tip.style.color = "white";//设置字体颜色
+            tip.style.backgroundColor = "hsl(350deg 100% 88% / 50%)";//js改变背景颜色
+            $("#tips").html("*沉默不是金！(∗•ω•∗)");
+        }
     });
-	//×事件
-	function hide(){
-	  $("#chatContent").toggle(1000);
-	  setTimeout(function(){$("#hidden").css("display","block");},900);
-	  setTimeout(function sir(){$("#hidden").css("transform","rotate(2deg)");},300);
-	  setTimeout(sir(),300);
-	};
-	//图标事件
-	function hideShow(){
-	  var hs=document.getElementById("chatContent").style.display;
-	  if(hs=="none"){
-	    //document.getElementById("chatContent").style.display="block";
-		$("#chatContent").show(1000);
-		$("#hidden").css("box-shadow","0 0 50px black");
-	    document.getElementById("chatContent").style.display="block";
-	    setTimeout(function(){$("#hidden").css("display","none");},900);
-	  }
-	}
-	//键盘事件
-    window.onkeydown=function(e){
-      var key=e.keyCode;
-	  //alert(key);
-	  if(key==13){
-		window.event.returnValue = false;//取消默认的回车事件
-	    $("#send").click();
-	  }
+
+    //×事件
+    function hide() {
+        $("#chatContent").toggle(1000);
+        setTimeout(function () {
+            $("#hidden").css("display", "block");
+        }, 900);
+        setTimeout(function sir() {
+            $("#hidden").css("transform", "rotate(2deg)");
+        }, 300);
+        setTimeout(sir(), 300);
     };
-	function copy(obj){
-      /*try{
-         var txt =obj.innerText;
-         window.clipboardData.setData('text', txt);
-         alert('复制成功。');
-      }catch(e){
-          alert('你的浏览器不支持哦！');
-      }*/
-	  //var txt=obj.innerText;
-	  var selection=window.getSelection();
-	  var range=document.createRange();
-	  range.selectNodeContents(obj);
-	  selection.removeAllRanges();
-	  selection.addRange(range);
-	  //$("#massage").val(txt);
+
+    //图标事件
+    function hideShow() {
+        var hs = document.getElementById("chatContent").style.display;
+        if (hs == "none") {
+            //document.getElementById("chatContent").style.display="block";
+            $("#chatContent").show(1000);
+            $("#hidden").css("box-shadow", "0 0 50px black");
+            document.getElementById("chatContent").style.display = "block";
+            setTimeout(function () {
+                $("#hidden").css("display", "none");
+            }, 900);
+        }
+    }
+
+    //键盘事件
+    window.onkeydown = function (e) {
+        var key = e.keyCode;
+        //alert(key);
+        if (key == 13) {
+            window.event.returnValue = false;//取消默认的回车事件
+            $("#send").click();
+        }
     };
-  </script>
- </body>
+
+    function copy(obj) {
+        /*try{
+           var txt =obj.innerText;
+           window.clipboardData.setData('text', txt);
+           alert('复制成功。');
+        }catch(e){
+            alert('你的浏览器不支持哦！');
+        }*/
+        //var txt=obj.innerText;
+        var selection = window.getSelection();
+        var range = document.createRange();
+        range.selectNodeContents(obj);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        //$("#massage").val(txt);
+    };
+</script>
+</body>
 </html>
